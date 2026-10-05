@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 240" width="120" height="240">
+  <!-- rock -->
+  <path d="M0,240 Q20,205 45,212 Q60,198 80,210 Q105,204 120,240 Z" fill="#1b2f45"/>
+  <!-- tower -->
+  <polygon points="42,70 78,70 90,214 30,214" fill="#e9d8a6" stroke="#1b2f45" stroke-width="2"/>
+  <polygon points="40,96 80,96 82,118 38,118" fill="#b23a2b"/>
+  <polygon points="36,144 84,144 86,166 34,166" fill="#b23a2b"/>
+  <polygon points="33,190 87,190 89,212 31,212" fill="#b23a2b"/>
+  <rect x="54" y="176" width="12" height="20" fill="#1b2f45"/>
+  <!-- gallery + lamp room -->
+  <rect x="36" y="64" width="48" height="8" fill="#1b2f45"/>
+  <rect x="46" y="36" width="28" height="28" fill="#fff4c2" stroke="#1b2f45" stroke-width="2"/>
+  <line x1="60" y1="36" x2="60" y2="64" stroke="#1b2f45" stroke-width="1.5"/>
+  <!-- roof -->
+  <polygon points="42,36 78,36 60,14" fill="#1b2f45"/>
+  <circle cx="60" cy="10" r="4" fill="#1b2f45"/>
+</svg>

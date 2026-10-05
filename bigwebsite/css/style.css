@@ -1,0 +1,520 @@
+/* =========================================================
+   Chart of the Uncharted Sea - style.css
+   Palette:
+     sea      #9cc5c0   (shallow water)
+     deep     #5d8fa0   (deep water)
+     ink      #1b2f45   (chart ink)
+     sand     #e9d8a6   (land)
+     buoy     #b23a2b   (warnings / accents)
+   ========================================================= */
+
+/* ---------- The giant sheet of paper ---------- */
+body {
+  margin: 0;
+  min-width: 3200px;          /* WAY too wide */
+  min-height: 2600px;         /* WAY too tall */
+  position: relative;
+  overflow: auto;
+  background-color: #9cc5c0;
+  /* faint latitude/longitude grid */
+  background-image:
+    linear-gradient(rgba(27, 47, 69, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 47, 69, 0.12) 1px, transparent 1px);
+  background-size: 200px 200px;
+  font-family: "IM Fell English", Georgia, "Times New Roman", serif;
+  color: #1b2f45;
+}
+
+/* ---------- Title block (ID) ---------- */
+#cartouche {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  width: 420px;
+  padding: 28px 32px;
+  background-color: #e9d8a6;
+  border: 3px double #1b2f45;
+  text-align: center;
+}
+
+#cartouche h1 {
+  margin: 0 0 12px 0;
+  font-size: 44px;
+  font-weight: normal;
+  line-height: 1.05;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #b23a2b;
+  text-underline-offset: 10px;
+}
+
+#cartouche p {
+  margin: 8px 0;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.hint {
+  font-size: 15px;
+  opacity: 0.75;
+}
+
+/* ---------- Compass rose (image) ---------- */
+#compass {
+  position: absolute;
+  top: 420px;
+  left: 1500px;
+  width: 260px;
+  height: 260px;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+/* ---------- Islands (class) ---------- */
+.island {
+  position: absolute;
+  padding: 40px;
+  background-color: #e9d8a6;
+  border: 2px solid #1b2f45;
+  border-radius: 46% 54% 38% 62% / 55% 40% 60% 45%;  /* lumpy coastline */
+  box-shadow: 0 0 0 14px rgba(233, 216, 166, 0.35);   /* shallow water ring */
+  text-align: center;
+  z-index: 2;
+}
+
+.island h2 {
+  margin: 0 0 6px 0;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.island p {
+  margin: 0;
+  font-size: 16px;
+  font-style: italic;
+}
+
+#isle-emails      { top: 700px;  left: 420px;  width: 340px; height: 180px; }
+#semicolon-reef   { top: 300px;  left: 2300px; width: 260px; height: 140px; }
+#benzene-atoll    { top: 1500px; left: 1100px; width: 300px; height: 300px;
+                    border-radius: 50%; }
+#password-sandbar { top: 2050px; left: 300px;  width: 420px; height: 90px;
+                    border-style: dashed; opacity: 0.6; }
+
+/* ---------- Messages in bottles (class) ---------- */
+.bottle {
+  position: absolute;
+  width: 220px;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  border: 1px solid #1b2f45;
+  font-family: "Special Elite", "Courier New", monospace;
+  font-size: 14px;
+  opacity: 0.12;               /* almost invisible... */
+  transform: rotate(-4deg);
+  transition: opacity 0.4s;
+  z-index: 3;
+}
+
+.bottle:hover {
+  opacity: 1;                  /* ...until you find it */
+}
+
+.bottle p { margin: 0; }
+
+#bottle-1 { top: 1100px; left: 2000px; }
+#bottle-2 { top: 1900px; left: 2500px; transform: rotate(6deg); }
+#bottle-3 { top: 250px;  left: 900px;  transform: rotate(3deg); }
+#bottle-4 { top: 2350px; left: 1500px; }
+
+/* ---------- Depth soundings (spans) ---------- */
+.soundings {
+  position: absolute;
+  margin: 0;
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+.soundings span {
+  display: inline-block;
+  margin: 0 18px;
+  color: #1b2f45;
+  opacity: 0.6;
+}
+
+#soundings-1 { top: 1000px; left: 900px; }
+#soundings-2 { top: 1350px; left: 2600px; }
+#soundings-3 { top: 2000px; left: 820px; }
+
+/* ---------- The crossed-out warning ---------- */
+#dragons {
+  position: absolute;
+  top: 820px;
+  left: 2700px;
+  width: 300px;
+  font-size: 24px;
+  text-align: right;
+}
+
+.crossed {
+  display: block;
+  color: #1b2f45;
+  text-decoration: line-through;
+  text-decoration-color: #b23a2b;
+  text-decoration-thickness: 3px;
+}
+
+.correction {
+  display: block;
+  margin-top: 6px;
+  font-size: 18px;
+  font-style: italic;
+  color: #b23a2b;
+}
+
+/* ---------- The sea serpent (ID) ---------- */
+#serpent {
+  position: absolute;
+  top: 2280px;
+  left: 2050px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #5d8fa0;
+}
+
+#serpent p { margin: 0; }
+
+.eye { color: #b23a2b; }
+
+.whisper {
+  font-size: 13px;
+  font-weight: normal;
+  font-style: italic;
+  color: #1b2f45;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+#serpent:hover .whisper { opacity: 1; }
+
+/* ---------- The edge of the map (ID) ---------- */
+#edge {
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+  width: 360px;
+  padding: 24px;
+  background-color: #1b2f45;
+  border: 2px solid #e9d8a6;
+  color: #e9d8a6;
+  text-align: left;
+}
+
+#edge h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+#edge p {
+  margin: 0 0 14px 0;
+  font-style: italic;
+}
+
+#edge a {
+  color: #e9d8a6;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+#edge a:hover,
+#edge a:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* =========================================================
+   NEW LANDMARKS
+   ========================================================= */
+
+/* ---------- Chart rulers along the edges ---------- */
+#ruler-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3200px;
+  height: 24px;
+  display: flex;
+  border-bottom: 1px solid #1b2f45;
+  font-size: 12px;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+#ruler-top span {
+  width: 200px;
+  padding: 5px 0 0 6px;
+  border-left: 1px solid #1b2f45;
+}
+
+#ruler-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #1b2f45;
+  font-size: 12px;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+#ruler-left span {
+  height: 200px;
+  padding: 30px 0 0 6px;
+  border-top: 1px solid #1b2f45;
+  box-sizing: border-box;
+}
+
+/* ---------- Lighthouse + sweeping beam ---------- */
+#lighthouse {
+  position: absolute;
+  top: 100px;
+  left: 2980px;
+  width: 120px;
+  height: 240px;
+  z-index: 2;
+}
+
+#beam {
+  position: absolute;
+  top: 90px;            /* lamp sits at 150px; beam is 120px tall */
+  left: 3040px;
+  width: 560px;
+  height: 120px;
+  background: linear-gradient(to right, rgba(255, 244, 194, 0.85), rgba(255, 244, 194, 0));
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  transform-origin: 0 50%;
+  transform: rotate(180deg);
+  animation: sweep 7s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+@keyframes sweep {
+  from { transform: rotate(150deg); }
+  to   { transform: rotate(215deg); }
+}
+
+#keeper-note {
+  position: absolute;
+  top: 360px;
+  left: 2900px;
+  width: 260px;
+  margin: 0;
+  font-size: 15px;
+  font-style: italic;
+  text-align: center;
+}
+
+/* ---------- Infinite Loop Lagoon ---------- */
+#lagoon {
+  position: absolute;
+  top: 740px;
+  left: 1820px;
+  width: 220px;
+  text-align: center;
+}
+
+.whirlpool {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 2px solid #1b2f45;
+  background: repeating-radial-gradient(circle,
+              #5d8fa0 0 10px, #9cc5c0 10px 22px);
+  transition: transform 3s ease-in-out;
+}
+
+#lagoon:hover .whirlpool {
+  transform: rotate(720deg) scale(0.92);
+}
+
+.place-name {
+  margin: 10px 0 0 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#lagoon:hover .whisper { opacity: 1; }
+
+/* ---------- Shipwreck ---------- */
+#shipwreck {
+  position: absolute;
+  top: 1180px;
+  left: 120px;
+  width: 360px;
+  padding: 22px 26px;
+  background-color: #8a6a45;          /* weathered wood */
+  border: 4px solid #5a4128;
+  color: #f4e9cf;
+  transform: rotate(-7deg);
+  z-index: 2;
+}
+
+#shipwreck h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.ship-name {
+  font-style: italic;
+  text-decoration: underline;
+}
+
+#shipwreck p {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+.chest {
+  font-family: "Special Elite", "Courier New", monospace;
+  cursor: pointer;
+}
+
+.chest-open {
+  display: none;
+  color: #ffe08a;
+}
+
+.chest:hover .chest-closed { display: none; }
+.chest:hover .chest-open   { display: inline; }
+
+/* ---------- X marks the spot ---------- */
+#x-marks {
+  position: absolute;
+  top: 1560px;
+  left: 620px;
+  width: 240px;
+  text-align: center;
+}
+
+.x {
+  margin: 0;
+  font-size: 90px;
+  font-weight: bold;
+  color: #b23a2b;
+  opacity: 0.35;
+  line-height: 1;
+  transition: opacity 0.4s;
+}
+
+.treasure {
+  margin: 8px 0 0 0;
+  padding: 10px;
+  background-color: #ffe08a;
+  border: 2px dashed #1b2f45;
+  font-size: 17px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+#x-marks:hover .x        { opacity: 1; }
+#x-marks:hover .treasure { opacity: 1; }
+
+/* ---------- Stack Overflow Trench ---------- */
+#trench {
+  position: absolute;
+  top: 1560px;
+  left: 1620px;
+  width: 600px;
+  height: 400px;
+  padding: 40px;
+  border: 2px dashed #1b2f45;
+  border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+  background: radial-gradient(ellipse at center, #1b2f45 0%, #2f5466 45%, #5d8fa0 100%);
+  color: #cfe3e0;
+  text-align: center;
+  z-index: 1;
+}
+
+#trench h2 {
+  margin: 60px 0 10px 0;
+  font-size: 30px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+#trench p {
+  width: 380px;
+  margin: 0 auto;
+  font-size: 16px;
+}
+
+.angler {
+  margin-top: 50px !important;
+}
+
+.lure {
+  color: #fff4c2;
+  font-size: 22px;
+  text-shadow: 0 0 12px #fff4c2;
+}
+
+.angler-text {
+  display: block;
+  margin-top: 8px;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.angler:hover .angler-text { opacity: 1; }
+
+/* ---------- Captain's log ---------- */
+#logbook {
+  position: absolute;
+  top: 1080px;
+  left: 2820px;
+  width: 290px;
+  padding: 22px 24px;
+  background-color: #f4ecd6;
+  border: 1px solid #1b2f45;
+  border-left: 10px solid #5a4128;    /* the book's spine */
+  font-family: "Special Elite", "Courier New", monospace;
+  font-size: 14px;
+  transform: rotate(2deg);
+  z-index: 2;
+}
+
+#logbook h2 {
+  margin: 0 0 14px 0;
+  font-family: "IM Fell English", Georgia, serif;
+  font-size: 26px;
+  font-weight: normal;
+  text-align: center;
+}
+
+#logbook p { margin: 0 0 10px 0; }
+
+.log-day { font-weight: bold; }
+
+.torn {
+  color: #b23a2b;
+  font-style: italic;
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+/* ---------- New bottle positions ---------- */
+#bottle-5 { top: 520px; left: 2860px; transform: rotate(-8deg); }
+#bottle-6 { top: 960px; left: 1580px; transform: rotate(5deg); }
+
+/* ---------- Respect visitors who prefer less motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  #beam { animation: none; }
+  .whirlpool, .bottle, .x, .treasure, .whisper, .angler-text { transition: none; }
+}

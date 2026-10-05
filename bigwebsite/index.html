@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chart of the Uncharted Sea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top">
+
+  <!-- Longitude and latitude markings along the edges, like a real chart -->
+  <div id="ruler-top">
+    <span>0°</span><span>5°E</span><span>10°E</span><span>15°E</span>
+    <span>20°E</span><span>25°E</span><span>30°E</span><span>35°E</span>
+    <span>40°E</span><span>45°E</span><span>50°E</span><span>55°E</span>
+    <span>60°E</span><span>65°E</span><span>70°E</span><span>75°E</span>
+  </div>
+  <div id="ruler-left">
+    <span>60°N</span><span>55°N</span><span>50°N</span><span>45°N</span>
+    <span>40°N</span><span>35°N</span><span>30°N</span><span>25°N</span>
+    <span>20°N</span><span>15°N</span><span>10°N</span><span>5°N</span>
+    <span>0°</span>
+  </div>
+
+  <!-- Title block in the top-left corner (styled with an ID) -->
+  <div id="cartouche">
+    <h1>Chart of the Uncharted Sea</h1>
+    <p>Surveyed by Krishiv Ahuja, autumn 2026</p>
+    <p class="hint">The map is larger than your screen. Scroll in every direction. Hover over anything that looks faded.</p>
+  </div>
+
+  <!-- Compass rose: the required image -->
+  <img id="compass" src="images/compass.svg" alt="A compass rose pointing north">
+
+  <!-- Islands (styled with a class) -->
+  <div class="island" id="isle-emails">
+    <h2>Isle of Unread Emails</h2>
+    <p>Population: 4,812 and rising.</p>
+  </div>
+
+  <div class="island" id="semicolon-reef">
+    <h2>Semicolon Reef</h2>
+    <p>Has sunk more code than any storm.</p>
+  </div>
+
+  <div class="island" id="benzene-atoll">
+    <h2>Benzene Atoll</h2>
+    <p>Six shores, perfectly stable. Electrons wander freely.</p>
+  </div>
+
+  <div class="island" id="password-sandbar">
+    <h2>Sandbar of Forgotten Passwords</h2>
+    <p>Visible only at low tide. Reset required.</p>
+  </div>
+
+  <!-- Messages in bottles: nearly invisible until you hover -->
+  <div class="bottle" id="bottle-1">
+    <p>If you found this, you scrolled further than most.</p>
+  </div>
+
+  <div class="bottle" id="bottle-2">
+    <p>The treasure is buried west of Benzene Atoll. Look for the X.</p>
+  </div>
+
+  <div class="bottle" id="bottle-3">
+    <p>Day 41. Still haven't found the end of this webpage.</p>
+  </div>
+
+  <div class="bottle" id="bottle-4">
+    <p>Whoever drew this map forgot to save their work twice.</p>
+  </div>
+
+  <!-- Depth soundings scattered across the water (spans) -->
+  <p class="soundings" id="soundings-1">
+    <span>12</span> <span>14</span> <span>19</span> <span>23</span>
+  </p>
+  <p class="soundings" id="soundings-2">
+    <span>31</span> <span>40</span> <span>58</span>
+  </p>
+  <p class="soundings" id="soundings-3">
+    <span>7</span> <span>5</span> <span>3</span> <span>1</span>
+  </p>
+
+  <!-- A warning someone crossed out -->
+  <p id="dragons">
+    <span class="crossed">Here be dragons</span>
+    <span class="correction">Here be one very shy sea serpent</span>
+  </p>
+
+  <!-- The serpent itself, hiding far out at sea -->
+  <div id="serpent">
+    <p>~~~ <span class="eye">o</span> ~~~~ ~~~ ~~</p>
+    <p class="whisper">You weren't supposed to find me.</p>
+  </div>
+
+  <!-- ===================== NEW LANDMARKS ===================== -->
+
+  <!-- Lighthouse in the top-right corner, with a sweeping beam -->
+  <div id="beam"></div>
+  <img id="lighthouse" src="images/lighthouse.svg" alt="A striped lighthouse on a rock">
+  <p id="keeper-note">Keeper's note: the light is on. Nobody has visited since 2009.</p>
+
+  <!-- A whirlpool that spins when you hover over it -->
+  <div id="lagoon">
+    <div class="whirlpool"></div>
+    <p class="place-name">Infinite Loop Lagoon</p>
+    <p class="whisper">while (true) { swim(); }</p>
+  </div>
+
+  <!-- A shipwreck with a locked chest -->
+  <div id="shipwreck">
+    <h2>Wreck of the <span class="ship-name">HMS Deadline</span></h2>
+    <p>Ran aground at 11:58pm. All hands survived. One assignment did not.</p>
+    <p class="chest">
+      <span class="chest-closed">[ a locked chest ]</span>
+      <span class="chest-open">Inside: one extension request, never sent.</span>
+    </p>
+  </div>
+
+  <!-- X marks the spot -->
+  <div id="x-marks">
+    <p class="x">X</p>
+    <p class="treasure">Treasure: 100 points.<br>Redeemable before 11:59pm.</p>
+  </div>
+
+  <!-- The deepest part of the sea -->
+  <div id="trench">
+    <h2>Stack Overflow Trench</h2>
+    <p>Depth: unknown. Every question sent down here gets marked as a duplicate.</p>
+    <p class="angler">
+      <span class="lure">●</span>
+      <span class="angler-text">An anglerfish glows in the dark: "Have you tried turning it off and on again?"</span>
+    </p>
+  </div>
+
+  <!-- The captain's logbook -->
+  <div id="logbook">
+    <h2>Captain's Log</h2>
+    <p><span class="log-day">Day 1.</span> Set sail from index.html. Morale high.</p>
+    <p><span class="log-day">Day 3.</span> Lost the stylesheet. Found it in a folder called css.</p>
+    <p><span class="log-day">Day 12.</span> Spotted a sea serpent. Pretended I didn't.</p>
+    <p><span class="log-day">Day 40.</span> Typed position: absolute so many times I dream in pixels.</p>
+    <p class="torn">Day 41. The rest of this page has been torn out.</p>
+  </div>
+
+  <!-- Two more bottles -->
+  <div class="bottle" id="bottle-5">
+    <p>The lighthouse keeper isn't lonely. The keeper is a cat.</p>
+  </div>
+
+  <div class="bottle" id="bottle-6">
+    <p>Don't swim in the lagoon. Some of us have been circling it for weeks.</p>
+  </div>
+
+  <!-- The edge of the map, bottom-right corner -->
+  <div id="edge">
+    <h2>You've reached the edge of the map.</h2>
+    <p>Nothing past here but unstyled whitespace.</p>
+    <a href="#top">Sail back to port</a>
+  </div>
+
+</body>
+</html>
