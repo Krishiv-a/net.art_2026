@@ -1,0 +1,235 @@
+/* =========================================================
+   Chart of the Uncharted Sea - style.css
+   Palette:
+     sea      #9cc5c0   (shallow water)
+     deep     #5d8fa0   (deep water)
+     ink      #1b2f45   (chart ink)
+     sand     #e9d8a6   (land)
+     buoy     #b23a2b   (warnings / accents)
+   ========================================================= */
+
+/* ---------- The giant sheet of paper ---------- */
+body {
+  margin: 0;
+  min-width: 3200px;          /* WAY too wide */
+  min-height: 2600px;         /* WAY too tall */
+  position: relative;
+  overflow: auto;
+  background-color: #9cc5c0;
+  /* faint latitude/longitude grid */
+  background-image:
+    linear-gradient(rgba(27, 47, 69, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 47, 69, 0.12) 1px, transparent 1px);
+  background-size: 200px 200px;
+  font-family: "IM Fell English", Georgia, "Times New Roman", serif;
+  color: #1b2f45;
+}
+
+/* ---------- Title block (ID) ---------- */
+#cartouche {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  width: 420px;
+  padding: 28px 32px;
+  background-color: #e9d8a6;
+  border: 3px double #1b2f45;
+  text-align: center;
+}
+
+#cartouche h1 {
+  margin: 0 0 12px 0;
+  font-size: 44px;
+  font-weight: normal;
+  line-height: 1.05;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #b23a2b;
+  text-underline-offset: 10px;
+}
+
+#cartouche p {
+  margin: 8px 0;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.hint {
+  font-size: 15px;
+  opacity: 0.75;
+}
+
+/* ---------- Compass rose (image) ---------- */
+#compass {
+  position: absolute;
+  top: 420px;
+  left: 1500px;
+  width: 260px;
+  height: 260px;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+/* ---------- Islands (class) ---------- */
+.island {
+  position: absolute;
+  padding: 40px;
+  background-color: #e9d8a6;
+  border: 2px solid #1b2f45;
+  border-radius: 46% 54% 38% 62% / 55% 40% 60% 45%;  /* lumpy coastline */
+  box-shadow: 0 0 0 14px rgba(233, 216, 166, 0.35);   /* shallow water ring */
+  text-align: center;
+  z-index: 2;
+}
+
+.island h2 {
+  margin: 0 0 6px 0;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.island p {
+  margin: 0;
+  font-size: 16px;
+  font-style: italic;
+}
+
+#isle-emails      { top: 700px;  left: 420px;  width: 340px; height: 180px; }
+#semicolon-reef   { top: 300px;  left: 2300px; width: 260px; height: 140px; }
+#benzene-atoll    { top: 1500px; left: 1100px; width: 300px; height: 300px;
+                    border-radius: 50%; }
+#password-sandbar { top: 2050px; left: 300px;  width: 420px; height: 90px;
+                    border-style: dashed; opacity: 0.6; }
+
+/* ---------- Messages in bottles (class) ---------- */
+.bottle {
+  position: absolute;
+  width: 220px;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  border: 1px solid #1b2f45;
+  font-family: "Special Elite", "Courier New", monospace;
+  font-size: 14px;
+  opacity: 0.12;               /* almost invisible... */
+  transform: rotate(-4deg);
+  transition: opacity 0.4s;
+  z-index: 3;
+}
+
+.bottle:hover {
+  opacity: 1;                  /* ...until you find it */
+}
+
+.bottle p { margin: 0; }
+
+#bottle-1 { top: 1100px; left: 2000px; }
+#bottle-2 { top: 1900px; left: 2500px; transform: rotate(6deg); }
+#bottle-3 { top: 250px;  left: 900px;  transform: rotate(3deg); }
+#bottle-4 { top: 2350px; left: 1500px; }
+
+/* ---------- Depth soundings (spans) ---------- */
+.soundings {
+  position: absolute;
+  margin: 0;
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+.soundings span {
+  display: inline-block;
+  margin: 0 18px;
+  color: #1b2f45;
+  opacity: 0.6;
+}
+
+#soundings-1 { top: 1000px; left: 900px; }
+#soundings-2 { top: 1350px; left: 2600px; }
+#soundings-3 { top: 2000px; left: 820px; }
+
+/* ---------- The crossed-out warning ---------- */
+#dragons {
+  position: absolute;
+  top: 820px;
+  left: 2700px;
+  width: 300px;
+  font-size: 24px;
+  text-align: right;
+}
+
+.crossed {
+  display: block;
+  color: #1b2f45;
+  text-decoration: line-through;
+  text-decoration-color: #b23a2b;
+  text-decoration-thickness: 3px;
+}
+
+.correction {
+  display: block;
+  margin-top: 6px;
+  font-size: 18px;
+  font-style: italic;
+  color: #b23a2b;
+}
+
+/* ---------- The sea serpent (ID) ---------- */
+#serpent {
+  position: absolute;
+  top: 2280px;
+  left: 2050px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #5d8fa0;
+}
+
+#serpent p { margin: 0; }
+
+.eye { color: #b23a2b; }
+
+.whisper {
+  font-size: 13px;
+  font-weight: normal;
+  font-style: italic;
+  color: #1b2f45;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+#serpent:hover .whisper { opacity: 1; }
+
+/* ---------- The edge of the map (ID) ---------- */
+#edge {
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+  width: 360px;
+  padding: 24px;
+  background-color: #1b2f45;
+  border: 2px solid #e9d8a6;
+  color: #e9d8a6;
+  text-align: left;
+}
+
+#edge h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+#edge p {
+  margin: 0 0 14px 0;
+  font-style: italic;
+}
+
+#edge a {
+  color: #e9d8a6;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+#edge a:hover,
+#edge a:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
