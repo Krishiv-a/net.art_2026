@@ -1,0 +1,468 @@
+@property --gold { syntax: '<color>'; inherits: true; initial-value: #febe10; }
+@property --deep { syntax: '<color>'; inherits: true; initial-value: #3b1a8c; }
+@property --glow { syntax: '<color>'; inherits: true; initial-value: #ffd34d; }
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #04050d;
+  overflow: hidden;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  color: #c9cdd8;
+}
+
+.screen {
+  position: fixed;
+  inset: 0;
+  user-select: none;
+}
+
+.screen input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--deep) 70%, #000) 0%, #04050d 65%);
+  --rate: 1;
+  opacity: .22;
+  filter: grayscale(1) brightness(.55);
+  cursor: pointer;
+  transition:
+    opacity 1.6s ease,
+    filter 1.6s ease,
+    --gold 1s ease,
+    --deep 1s ease,
+    --glow 1s ease;
+}
+
+.screen:hover .stage {
+  opacity: 1;
+  filter: none;
+}
+
+.turbo:focus ~ .stage { --rate: 2.6; }
+
+#home:checked ~ .stage { --gold: #febe10; --deep: #3b1a8c; --glow: #ffd34d; }
+#away:checked ~ .stage { --gold: #f2c14e; --deep: #0b2a6b; --glow: #5b8cff; }
+#noche:checked ~ .stage { --gold: #e6c2ff; --deep: #5a0f8c; --glow: #b46bff; }
+
+.stars {
+  position: absolute;
+  inset: 0 0 40% 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 37% 62%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 81% 33%, var(--gold) 50%, transparent 51%),
+    radial-gradient(1px 1px at 66% 9%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 23% 88%, var(--gold) 50%, transparent 51%),
+    radial-gradient(1px 1px at 54% 41%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 92% 74%, #fff 50%, transparent 51%);
+  background-size: 260px 260px;
+  animation: drift calc(40s / var(--rate)) linear infinite, twinkle 2.4s ease-in-out infinite alternate;
+}
+
+.beam {
+  position: absolute;
+  top: -8vh;
+  width: 46vw;
+  height: 125vh;
+  clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%);
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--glow) 40%, #fff) 0%, color-mix(in srgb, var(--glow) 25%, transparent) 45%, transparent 85%);
+  opacity: .3;
+  mix-blend-mode: screen;
+  transform-origin: 50% 0;
+  transition: opacity .3s ease;
+}
+
+.beam.left {
+  left: -6vw;
+  animation: sweep-left calc(7s / var(--rate)) ease-in-out infinite alternate;
+}
+
+.beam.right {
+  right: -6vw;
+  animation: sweep-right calc(8.5s / var(--rate)) ease-in-out infinite alternate;
+}
+
+.lamp {
+  position: absolute;
+  top: -10px;
+  width: 140px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #fff, color-mix(in srgb, var(--glow) 60%, transparent), transparent);
+  filter: blur(2px);
+}
+
+.lamp.left { left: calc(17vw - 70px); }
+.lamp.right { right: calc(17vw - 70px); }
+
+.chant {
+  position: absolute;
+  top: 26%;
+  left: 0;
+  display: flex;
+  white-space: nowrap;
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: 24vh;
+  line-height: 1;
+  letter-spacing: .04em;
+  color: transparent;
+  -webkit-text-stroke: 2px color-mix(in srgb, var(--gold) 45%, transparent);
+  animation: scroll calc(26s / var(--rate)) linear infinite;
+}
+
+.chant span {
+  padding-right: .6em;
+}
+
+.pitch {
+  position: absolute;
+  left: -30vw;
+  right: -30vw;
+  bottom: -6vh;
+  height: 52vh;
+  transform: perspective(700px) rotateX(58deg);
+  transform-origin: 50% 100%;
+  background:
+    repeating-linear-gradient(90deg, #1c6b2e 0 8vw, #17602a 8vw 16vw);
+  box-shadow: inset 0 40px 80px rgba(0, 0, 0, .55);
+}
+
+.pitch::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(255, 255, 255, .75);
+}
+
+.pitch::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22vw;
+  height: 22vw;
+  border: 3px solid rgba(255, 255, 255, .75);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.speedlines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 140px 1px at 20% 15%, rgba(255, 255, 255, .8), transparent),
+    radial-gradient(ellipse 90px 1px at 70% 38%, rgba(255, 255, 255, .7), transparent),
+    radial-gradient(ellipse 180px 1.5px at 45% 62%, rgba(255, 255, 255, .8), transparent),
+    radial-gradient(ellipse 110px 1px at 85% 86%, rgba(255, 255, 255, .7), transparent);
+  background-size: 640px 220px;
+  opacity: 0;
+  mix-blend-mode: screen;
+  transition: opacity .6s ease;
+  animation: rush .35s linear infinite;
+}
+
+.turbo:focus ~ .stage .speedlines {
+  opacity: .45;
+}
+
+.turbo:focus ~ .stage .beam {
+  opacity: .5;
+}
+
+.orbs {
+  position: absolute;
+  inset: 0;
+}
+
+.x {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--s);
+  height: var(--s);
+  animation: move-x calc(var(--dx) / var(--rate)) linear var(--d) infinite alternate;
+}
+
+.y {
+  width: 100%;
+  height: 100%;
+  animation: move-y calc(var(--dy) / var(--rate)) linear var(--d) infinite alternate;
+}
+
+.ball {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 calc(var(--s) * .18) color-mix(in srgb, var(--glow) 70%, transparent));
+  transition: transform .4s cubic-bezier(.3, 1.6, .5, 1), filter .4s ease;
+}
+
+.ball svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: turn calc(var(--spin) / var(--rate)) linear infinite;
+}
+
+.ball::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .15) 16%, transparent 34%),
+    radial-gradient(circle at 50% 50%, transparent 50%, rgba(10, 10, 40, .55) 100%);
+  pointer-events: none;
+}
+
+.x:nth-of-type(1) { --s: 96px; --dx: 9.1s; --dy: 6.7s; --d: -2s; --spin: 3s; }
+.x:nth-of-type(2) { --s: 58px; --dx: 6.3s; --dy: 8.9s; --d: -5s; --spin: 2.2s; }
+.x:nth-of-type(3) { --s: 132px; --dx: 13.7s; --dy: 10.3s; --d: -9s; --spin: 5s; }
+.x:nth-of-type(4) { --s: 44px; --dx: 4.9s; --dy: 5.6s; --d: -1s; --spin: 1.4s; }
+.x:nth-of-type(5) { --s: 76px; --dx: 11.2s; --dy: 7.4s; --d: -6s; --spin: 2.6s; }
+
+.x:nth-of-type(even) .ball svg { animation-direction: reverse; }
+.x:nth-of-type(3n) .y { animation-timing-function: ease-in-out; }
+
+.stars,
+.beam,
+.chant,
+.speedlines,
+.x,
+.y,
+.ball svg {
+  animation-play-state: paused;
+}
+
+.screen:hover .stars,
+.screen:hover .beam,
+.screen:hover .chant,
+.screen:hover .speedlines,
+.screen:hover .x,
+.screen:hover .y,
+.screen:hover .ball svg {
+  animation-play-state: running;
+}
+
+.stage:active .ball {
+  transform: scale(1.5);
+  filter: drop-shadow(0 0 calc(var(--s) * .4) var(--glow));
+}
+
+.stage:active .beam {
+  opacity: .65;
+}
+
+.goal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: 26vw;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: .04em;
+  color: #fff;
+  text-shadow: 0 0 30px var(--glow), 0 0 80px var(--glow);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.4);
+  pointer-events: none;
+  transition: opacity .25s ease, transform .5s cubic-bezier(.3, 1.6, .5, 1);
+}
+
+#home:checked ~ .goal { --glow: #ffd34d; }
+#away:checked ~ .goal { --glow: #5b8cff; }
+#noche:checked ~ .goal { --glow: #b46bff; }
+
+.stage:active ~ .goal {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.idle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(92vw, 1000px);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+  transition: opacity .8s ease, transform .8s ease, filter .8s ease;
+}
+
+.idle h1 {
+  margin: 0;
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: clamp(3rem, 12vw, 9rem);
+  font-weight: normal;
+  line-height: .9;
+  letter-spacing: .06em;
+  color: #fff;
+}
+
+.idle h1 span {
+  color: #febe10;
+}
+
+.idle p {
+  margin: 1rem 0 0;
+  font-size: clamp(.9rem, 2vw, 1.15rem);
+  font-weight: 600;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: #e3e6ee;
+}
+
+.idle p::after {
+  content: " \25B8";
+  animation: blink 1s steps(1) infinite;
+}
+
+.screen:hover .idle {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.controls {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translate(-50%, 1rem);
+  display: flex;
+  gap: .5rem;
+  opacity: 0;
+  transition: opacity .6s ease .3s, transform .6s ease .3s;
+}
+
+.screen:hover .controls {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.controls label {
+  padding: .5rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 999px;
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  color: #fff;
+  background: rgba(4, 5, 13, .7);
+  cursor: pointer;
+  transition: background .3s ease, color .3s ease, border-color .3s ease;
+}
+
+.controls label:hover {
+  border-color: #fff;
+}
+
+#home:checked ~ .controls label[for="home"] { background: #fff; border-color: #fff; color: #3b1a8c; }
+#away:checked ~ .controls label[for="away"] { background: #0b2a6b; border-color: #f2c14e; color: #f2c14e; }
+#noche:checked ~ .controls label[for="noche"] { background: #5a0f8c; border-color: #e6c2ff; color: #fff; }
+
+.turbo {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 2;
+  padding: .5rem 1.1rem;
+  border: 1px solid #febe10;
+  border-radius: 999px;
+  font: 600 .95rem "Barlow Condensed", "Arial Narrow", sans-serif;
+  letter-spacing: .18em;
+  color: #febe10;
+  background: rgba(4, 5, 13, .7);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity .6s ease .3s, transform .6s ease .3s, background .3s ease, color .3s ease, box-shadow .3s ease;
+}
+
+.turbo::before {
+  content: "\25B6  ";
+}
+
+.screen:hover .turbo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.turbo:focus {
+  outline: none;
+  color: #04050d;
+  background: #febe10;
+  box-shadow: 0 0 24px #febe10;
+}
+
+.turbo:focus::before {
+  content: "\25B6\25B6  ";
+}
+
+.turbo:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+#home:focus-visible ~ .controls label[for="home"],
+#away:focus-visible ~ .controls label[for="away"],
+#noche:focus-visible ~ .controls label[for="noche"] {
+  outline: 2px solid #febe10;
+  outline-offset: 3px;
+}
+
+@keyframes move-x {
+  to { transform: translateX(calc(100vw - var(--s))); }
+}
+
+@keyframes move-y {
+  to { transform: translateY(calc(100vh - var(--s))); }
+}
+
+@keyframes turn {
+  to { transform: rotate(1turn); }
+}
+
+@keyframes sweep-left {
+  from { transform: rotate(-30deg); }
+  to { transform: rotate(8deg); }
+}
+
+@keyframes sweep-right {
+  from { transform: rotate(30deg); }
+  to { transform: rotate(-8deg); }
+}
+
+@keyframes rush {
+  to { background-position: -640px 0; }
+}
+
+@keyframes scroll {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes drift {
+  to { background-position: -260px 260px; }
+}
+
+@keyframes twinkle {
+  to { opacity: .45; }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
