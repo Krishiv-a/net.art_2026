@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  --bg: #1f3d2b;
+  --ink: #f4a259;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: "Courier New", Courier, monospace;
+  overflow: hidden;
+  user-select: none;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+#stage {
+  position: fixed;
+  inset: 0;
+  cursor: crosshair;
+}
+
+#hint,
+#trail,
+.info {
+  position: fixed;
+  z-index: 2;
+  pointer-events: none;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+#hint {
+  top: 24px;
+  left: 28px;
+}
+
+.info {
+  bottom: 24px;
+  right: 28px;
+  text-align: right;
+}
+
+#trail {
+  bottom: 24px;
+  left: 28px;
+  display: flex;
+  gap: 6px;
+  list-style: none;
+}
+
+#trail li {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ink);
+  opacity: 0.5;
+}
+
+#trail li:last-child {
+  background: var(--ink);
+  color: var(--bg);
+  opacity: 1;
+}
+
+.guide {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  pointer-events: none;
+  --shape-color: var(--ink);
+}
+
+.ring {
+  width: 110px;
+  height: 110px;
+  border: 8px solid var(--shape-color);
+  border-radius: 50%;
+  animation: ripple 1s ease-out forwards;
+}
+
+.zigzag {
+  width: 60px;
+  height: 170px;
+  overflow: visible;
+  animation: stretch 1.1s ease-in-out forwards;
+}
+
+.zigzag polyline {
+  fill: none;
+  stroke: var(--shape-color);
+  stroke-width: 12;
+  stroke-linejoin: miter;
+}
+
+.block {
+  width: 80px;
+  height: 80px;
+  background: var(--shape-color);
+  animation: drop 1s ease-in forwards;
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes stretch {
+  0% {
+    transform: translate(-50%, -50%) scaleY(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translate(-50%, -50%) scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -90%) scaleY(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes drop {
+  0% {
+    transform: translate(-50%, -200%);
+    opacity: 1;
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(1.3, 0.6);
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1, 1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.4);
+    opacity: 0;
+  }
+}
